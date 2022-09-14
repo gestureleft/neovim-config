@@ -21,3 +21,6 @@ set.number = true
 set.hidden = true
 
 set.swapfile = false
+
+set.mouse = "a"
+set.rnu = true
