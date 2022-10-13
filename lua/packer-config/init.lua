@@ -30,6 +30,7 @@ return require("packer").startup(function()
 	use({ "~/dev/jakt/editors/vim", as = "Jakt" })
 	use("digitaltoad/vim-pug")
 	use("storyn26383/vim-vue")
+	use("f-person/git-blame.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
