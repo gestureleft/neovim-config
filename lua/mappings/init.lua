@@ -11,3 +11,6 @@ map("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
 map("n", "<leader>fh", ":Telescope git_bcommits<CR>", opts)
 map("n", "<leader>n", ":set rnu! <CR>", opts)
 map("n", "<leader>b", ":GitBlameToggle<CR>", opts)
+
+map("n", "<C-Tab>", ":bprev<CR>", opts)
+map("n", "<C-S-Tab>", ":bnext<CR>", opts)
