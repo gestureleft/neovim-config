@@ -31,6 +31,7 @@ return require("packer").startup(function()
 	use("digitaltoad/vim-pug")
 	use("storyn26383/vim-vue")
 	use("f-person/git-blame.nvim")
+	use("ThePrimeagen/harpoon")
 
 	if packer_bootstrap then
 		require("packer").sync()
