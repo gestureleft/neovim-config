@@ -32,6 +32,9 @@ return require("packer").startup(function()
 	use("storyn26383/vim-vue")
 	use("f-person/git-blame.nvim")
 	use("ThePrimeagen/harpoon")
+	use("nvim-treesitter/nvim-treesitter")
+	use({ "derektata/lorem.nvim" })
+	use({ "mg979/vim-visual-multi" })
 
 	if packer_bootstrap then
 		require("packer").sync()

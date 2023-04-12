@@ -24,3 +24,7 @@ set.swapfile = false
 
 set.mouse = "a"
 set.rnu = true
+
+set.list = true
+-- Make them ridiculously big so it's obvious when they're there
+set.tabstop = 9

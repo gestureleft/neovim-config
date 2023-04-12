@@ -16,8 +16,6 @@ local on_attach = function(client, bufnr)
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
@@ -29,29 +27,29 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<space>f", vim.lsp.buf.format, bufopts)
 end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local nvim_lsp = require("lspconfig")
 
 local lsp_flags = {
 	-- This is the default in Nvim 0.7+
 	debounce_text_changes = 150,
 }
-require("lspconfig")["sumneko_lua"].setup({
+nvim_lsp["lua_ls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
 })
-require("lspconfig")["tsserver"].setup({
+nvim_lsp["tsserver"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
+	root_dir = nvim_lsp.util.root_pattern("package.json"),
 })
-require("lspconfig")["rust_analyzer"].setup({
+nvim_lsp["rust_analyzer"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	-- Server-specific settings...
@@ -64,12 +62,12 @@ require("lspconfig")["rust_analyzer"].setup({
 	},
 	capabilities = capabilities,
 })
-require("lspconfig")["cmake"].setup({
+nvim_lsp["cmake"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
 })
-require("lspconfig")["clangd"].setup({
+nvim_lsp["clangd"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
@@ -78,5 +76,35 @@ require("lspconfig")["clangd"].setup({
 		"--clang-tidy",
 	},
 })
-require("lspconfig").eslint.setup({})
-require("lspconfig")["vls"].setup({})
+nvim_lsp.eslint.setup({})
+nvim_lsp.jdtls.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+})
+-- nvim_lsp["vuels"].setup({
+-- 	on_attach = on_attach,
+-- 	flags = lsp_flags,
+-- 	capabilities = capabilities,
+-- })
+nvim_lsp["volar"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+})
+nvim_lsp.denols.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	root_dir = nvim_lsp.util.root_pattern("deno.json"),
+})
+nvim_lsp.tailwindcss.setup({})
+nvim_lsp.pylsp.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+})
+nvim_lsp.pyre.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+})
