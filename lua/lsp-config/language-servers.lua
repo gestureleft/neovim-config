@@ -97,13 +97,23 @@ nvim_lsp.denols.setup({
 	flags = lsp_flags,
 	root_dir = nvim_lsp.util.root_pattern("deno.json"),
 })
-nvim_lsp.tailwindcss.setup({})
+nvim_lsp.tailwindcss.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+})
 nvim_lsp.pylsp.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
 })
 nvim_lsp.pyre.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+})
+
+nvim_lsp.kotlin_language_server.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,

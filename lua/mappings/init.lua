@@ -37,5 +37,9 @@ vim.keymap.set("n", "<leader>4", function()
 	ui.nav_file(4)
 end)
 
+vim.keymap.set("n", "<leader>r", function()
+	vim.lsp.buf.rename()
+end)
+
 map("n", "<C-Tab>", ":bprev<CR>", opts)
 map("n", "<C-S-Tab>", ":bnext<CR>", opts)
