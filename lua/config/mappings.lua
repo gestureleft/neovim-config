@@ -13,3 +13,7 @@ end)
 
 -- Code Actions
 vim.keymap.set("n", "<Leader>ca", ":lua vim.lsp.buf.code_action()<cr>")
+
+-- Tabs
+vim.keymap.set("n", "<C-l>", ":tabnext<cr>")
+vim.keymap.set("n", "<C-h>", ":tabprevious<cr>")
