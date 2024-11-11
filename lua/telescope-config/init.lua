@@ -1,5 +1,6 @@
 require("telescope").setup({
 	defaults = {
+		wrap_results = true,
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",
@@ -14,7 +15,8 @@ require("telescope").setup({
 	},
 	pickers = {
 		find_files = {
-			theme = "dropdown",
+			hidden = true,
+			-- theme = "dropdown",
 		},
 	},
 })

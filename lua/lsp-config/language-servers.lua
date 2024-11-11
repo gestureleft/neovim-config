@@ -30,6 +30,22 @@ local on_attach = function(client, bufnr)
 end
 
 -- Add additional capabilities supported by nvim-cmp
+
+-- local server_config = require("lspconfig.configs")
+-- local root_pattern = require("lspconfig.util").root_pattern
+--
+-- server_config.crumb = {
+-- 	default_config = {
+-- 		cmd = { "~/Developer/crumb/target/debug/crumb-language-server" },
+-- 		name = "crumb",
+-- 		filetypes = {
+-- 			"crumb",
+-- 		},
+-- 	},
+-- }
+--
+-- require("lspconfig").crumb.setup({})
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local nvim_lsp = require("lspconfig")
@@ -43,11 +59,26 @@ nvim_lsp["lua_ls"].setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
 })
-nvim_lsp["tsserver"].setup({
+nvim_lsp["ts_ls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
-	root_dir = nvim_lsp.util.root_pattern("package.json"),
+	-- root_dir = nvim_lsp.util.root_pattern("package.json"),
+	init_options = {
+		plugins = {
+			{
+				name = "@vue/typescript-plugin",
+				location = "/Users/harrison.marshall/Library/pnpm/global/5/node_modules/@vue/typescript-plugin",
+				languages = { "javascript", "typescript", "vue", "typescript.tsx" },
+			},
+		},
+	},
+	filetypes = {
+		"javascript",
+		"typescript",
+		"vue",
+		"typescript.tsx",
+	},
 })
 nvim_lsp["rust_analyzer"].setup({
 	on_attach = on_attach,
@@ -114,6 +145,11 @@ nvim_lsp.pyre.setup({
 })
 
 nvim_lsp.kotlin_language_server.setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+})
+nvim_lsp.stylelint_lsp.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
