@@ -1,8 +1,14 @@
 vim.wo.relativenumber = true
 
+-- Go to new window when splitting
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
 vim.opt.cursorline = true
+
+-- Case insensitive '/' searching
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 require("config.lazy")
 require("config.colourscheme")
