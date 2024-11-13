@@ -7,4 +7,12 @@ require("lualine").setup({
       },
     },
   },
+  inactive_sections = {
+    lualine_c = {
+      {
+        "filename",
+        path = 1,
+      },
+    },
+  },
 })

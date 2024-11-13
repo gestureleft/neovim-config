@@ -22,13 +22,12 @@ lspconfig.volar.setup({
   init_options = {
     typescript = {
       tsdk = "/Users/harrison.marshall/.nvm/versions/node/v20.11.0/lib/node_modules/typescript/lib",
-      -- tsdk = "/path/to/.npm/lib/node_modules/typescript/lib",
-      -- Alternative location if installed as root:
-      -- tsdk = '/usr/local/lib/node_modules/typescript/lib'
     },
   },
 })
 lspconfig.eslint.setup({})
+lspconfig.stylelint_lsp.setup({})
+lspconfig.css_variables.setup({})
 
 lspconfig.lua_ls.setup({
   on_init = function(client)
