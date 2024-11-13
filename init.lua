@@ -1,4 +1,5 @@
 vim.wo.relativenumber = true
+vim.wo.number = true
 
 -- Go to new window when splitting
 vim.opt.splitright = true
