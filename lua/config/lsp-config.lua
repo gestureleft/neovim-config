@@ -1,14 +1,19 @@
 local lspconfig = require("lspconfig")
 
-lspconfig.rust_analyzer.setup({})
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+lspconfig.rust_analyzer.setup({
+  capabilities = capabilities,
+})
 
 lspconfig.ts_ls.setup({
+  capabilities = capabilities,
   init_options = {
     plugins = {
       {
         name = "@vue/typescript-plugin",
         location = "/Users/harrison.marshall/.nvm/versions/node/v20.11.0/lib/node_modules/@vue/typescript-plugin",
-        languages = { "javascript", "typescript", "vue" },
+        languages = { "javascript", "typescript", "vue", "typescriptreact" },
       },
     },
   },
@@ -16,20 +21,32 @@ lspconfig.ts_ls.setup({
     "javascript",
     "typescript",
     "vue",
+    "typescriptreact",
   },
 })
 lspconfig.volar.setup({
+  capabilities = capabilities,
   init_options = {
     typescript = {
       tsdk = "/Users/harrison.marshall/.nvm/versions/node/v20.11.0/lib/node_modules/typescript/lib",
     },
   },
 })
-lspconfig.eslint.setup({})
-lspconfig.stylelint_lsp.setup({})
-lspconfig.css_variables.setup({})
+lspconfig.eslint.setup({
+  capabilities = capabilities,
+})
+lspconfig.stylelint_lsp.setup({
+  capabilities = capabilities,
+})
+lspconfig.css_variables.setup({
+  capabilities = capabilities,
+})
+lspconfig.cssmodules_ls.setup({
+  capabilities = capabilities,
+})
 
 lspconfig.lua_ls.setup({
+  capabilities = capabilities,
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name

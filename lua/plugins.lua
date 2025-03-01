@@ -13,11 +13,19 @@ return {
   },
 
   {
-    "neovim/nvim-lspconfig",
+    "saghen/blink.cmp",
+    dependencies = "rafamadriz/friendly-snippets",
+    version = "v0.*",
+    opts = {
+      keymap = { preset = "default" },
+      appearance = { use_nvim_cmp_as_default = true, nerd_font_variant = "mono" },
+      signature = { enabled = true },
+      cmdline = { completion = { menu = { auto_show = true } } },
+    },
   },
 
   {
-    "echasnovski/mini.completion",
+    "neovim/nvim-lspconfig",
   },
 
   { "elentok/format-on-save.nvim" },
