@@ -1,18 +1,17 @@
-local lspconfig = require("lspconfig")
-
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-lspconfig.rust_analyzer.setup({
+vim.lsp.config("rust_analyzer", {
   capabilities = capabilities,
 })
+vim.lsp.enable("rust_analyzer")
 
-lspconfig.ts_ls.setup({
+vim.lsp.config("ts_ls", {
   capabilities = capabilities,
   init_options = {
     plugins = {
       {
         name = "@vue/typescript-plugin",
-        location = "/Users/harrison.marshall/.nvm/versions/node/v20.11.0/lib/node_modules/@vue/typescript-plugin",
+        location = "/Users/harrison.marshall/.nvm/versions/node/v22.14.0/lib/node_modules/@vue/typescript-plugin",
         languages = { "javascript", "typescript", "vue", "typescriptreact" },
       },
     },
@@ -24,28 +23,39 @@ lspconfig.ts_ls.setup({
     "typescriptreact",
   },
 })
-lspconfig.volar.setup({
+vim.lsp.enable("ts_ls")
+
+vim.lsp.config("eslint", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("eslint")
+
+vim.lsp.config("vue_ls", {
   capabilities = capabilities,
   init_options = {
     typescript = {
-      tsdk = "/Users/harrison.marshall/.nvm/versions/node/v20.11.0/lib/node_modules/typescript/lib",
+      tsdk = "/Users/harrison.marshall/.nvm/versions/node/v22.14.0/lib/node_modules/typescript/lib",
     },
   },
 })
-lspconfig.eslint.setup({
-  capabilities = capabilities,
-})
-lspconfig.stylelint_lsp.setup({
-  capabilities = capabilities,
-})
-lspconfig.css_variables.setup({
-  capabilities = capabilities,
-})
-lspconfig.cssmodules_ls.setup({
-  capabilities = capabilities,
-})
+vim.lsp.enable("vue_ls")
 
-lspconfig.lua_ls.setup({
+vim.lsp.config("stylelint_lsp", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("stylelint_lsp")
+
+vim.lsp.config("css_variables", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("css_variables")
+
+vim.lsp.config("cssmodules_ls", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("cssmodules_ls")
+
+vim.lsp.config("lua_ls", {
   capabilities = capabilities,
   on_init = function(client)
     if client.workspace_folders then
@@ -57,21 +67,13 @@ lspconfig.lua_ls.setup({
 
     client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
       runtime = {
-        -- Tell the language server which version of Lua you're using
-        -- (most likely LuaJIT in the case of Neovim)
         version = "LuaJIT",
       },
-      -- Make the server aware of Neovim runtime files
       workspace = {
         checkThirdParty = false,
         library = {
           vim.env.VIMRUNTIME,
-          -- Depending on the usage, you might want to add additional paths here.
-          -- "${3rd}/luv/library"
-          -- "${3rd}/busted/library",
         },
-        -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
-        -- library = vim.api.nvim_get_runtime_file("", true)
       },
     })
   end,
@@ -79,3 +81,4 @@ lspconfig.lua_ls.setup({
     Lua = {},
   },
 })
+vim.lsp.enable("lua_ls")

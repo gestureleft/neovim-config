@@ -4,6 +4,7 @@ vim.wo.number = true
 -- Go to new window when splitting
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.cmd("filetype plugin on")
 
 vim.api.nvim_create_autocmd("TermOpen", {
   callback = function()
@@ -33,5 +34,5 @@ require("config.mappings")
 require("config.lsp-config")
 require("config.format-on-save")
 require("config.gitsigns")
-require("config.lualine")
-require("config.noice")
+-- require("config.lualine")
+-- require("config.noice")

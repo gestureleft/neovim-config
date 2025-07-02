@@ -6,10 +6,14 @@ return {
     opts = {},
   },
 
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   tag = "0.1.8",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  -- },
   {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   {
@@ -50,10 +54,7 @@ return {
     },
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
+    "mfussenegger/nvim-jdtls",
+    dependencies = { "mfussenegger/nvim-dap" },
   },
 }
