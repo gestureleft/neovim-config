@@ -10,6 +10,11 @@ vim.lsp.config("ts_ls", {
   init_options = {
     plugins = {
       {
+        name = "@css-modules-kit/ts-plugin",
+        location = "/Users/harrison.marshall/.nvm/versions/node/v22.14.0/lib/node_modules/@css-modules-kit/ts-plugin",
+        languages = { "css" },
+      },
+      {
         name = "@vue/typescript-plugin",
         location = "/Users/harrison.marshall/.nvm/versions/node/v22.14.0/lib/node_modules/@vue/typescript-plugin",
         languages = { "javascript", "typescript", "vue", "typescriptreact" },
@@ -28,7 +33,12 @@ vim.lsp.enable("ts_ls")
 vim.lsp.config("eslint", {
   capabilities = capabilities,
 })
-vim.lsp.enable("eslint")
+-- vim.lsp.enable("eslint")
+
+vim.lsp.config("oxlint", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("oxlint")
 
 vim.lsp.config("vue_ls", {
   capabilities = capabilities,
