@@ -1,22 +1,17 @@
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-vim.lsp.config("rust_analyzer", {
-  capabilities = capabilities,
-})
-vim.lsp.enable("rust_analyzer")
-
 vim.lsp.config("ts_ls", {
   capabilities = capabilities,
   init_options = {
     plugins = {
       {
         name = "@css-modules-kit/ts-plugin",
-        location = "/Users/harrison.marshall/.nvm/versions/node/v22.14.0/lib/node_modules/@css-modules-kit/ts-plugin",
+        location = "/Users/harrison.marshall/.local/share/mise/installs/node/22.18.0/lib/node_modules/@css-modules-kit/ts-plugin",
         languages = { "css" },
       },
       {
         name = "@vue/typescript-plugin",
-        location = "/Users/harrison.marshall/.nvm/versions/node/v22.14.0/lib/node_modules/@vue/typescript-plugin",
+        location = "/Users/harrison.marshall/.local/share/mise/installs/node/22.18.0/lib/node_modules/@vue/typescript-plugin",
         languages = { "javascript", "typescript", "vue", "typescriptreact" },
       },
     },
@@ -32,8 +27,9 @@ vim.lsp.enable("ts_ls")
 
 vim.lsp.config("eslint", {
   capabilities = capabilities,
+  root_dir = require("lspconfig.util").root_pattern("eslint.config.js", "package.json", ".git"),
 })
--- vim.lsp.enable("eslint")
+vim.lsp.enable("eslint")
 
 vim.lsp.config("oxlint", {
   capabilities = capabilities,
@@ -44,7 +40,7 @@ vim.lsp.config("vue_ls", {
   capabilities = capabilities,
   init_options = {
     typescript = {
-      tsdk = "/Users/harrison.marshall/.nvm/versions/node/v22.14.0/lib/node_modules/typescript/lib",
+      tsdk = "/Users/harrison.marshall/.local/share/mise/installs/node/22.18.0/lib/node_modules/typescript/lib",
     },
   },
 })
@@ -92,3 +88,16 @@ vim.lsp.config("lua_ls", {
   },
 })
 vim.lsp.enable("lua_ls")
+
+vim.lsp.config("basedpyright", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("basedpyright")
+
+vim.lsp.config("oxfmt", {
+  capabilities = capabilities,
+  cmd = { "oxfmt", "--lsp" },
+  filetypes = { "css", "html", "javascript", "json", "typescript", "vue", "typescriptreact", "yaml" },
+  root_dir = require("lspconfig.util").root_pattern("package.json", ".git"),
+})
+vim.lsp.enable("oxfmt")

@@ -1,2 +1,2 @@
-vim.cmd([[colorscheme retrobox]])
+vim.cmd([[colorscheme gruvbox]])
 -- vim.cmd([[colorscheme shine]])

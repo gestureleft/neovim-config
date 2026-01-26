@@ -45,16 +45,23 @@ return {
     "github/copilot.vim",
   },
 
-  {
-    "olimorris/codecompanion.nvim",
-    config = true,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
+  -- {
+  --   "folke/sidekick.nvim",
+  -- },
+
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   config = true,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  -- },
   {
     "mfussenegger/nvim-jdtls",
     dependencies = { "mfussenegger/nvim-dap" },
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
   },
 }
