@@ -14,6 +14,15 @@ return {
   {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      previewers = {
+        git_diff = {
+          cmd_deleted = "git diff --no-ext-diff --color HEAD --",
+          cmd_modified = "git diff --no-ext-diff --color HEAD",
+          cmd_untracked = "git diff --no-ext-diff --color --no-index /dev/null",
+        },
+      },
+    },
   },
 
   {

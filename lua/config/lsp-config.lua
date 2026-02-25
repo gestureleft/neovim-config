@@ -93,11 +93,3 @@ vim.lsp.config("basedpyright", {
   capabilities = capabilities,
 })
 vim.lsp.enable("basedpyright")
-
-vim.lsp.config("oxfmt", {
-  capabilities = capabilities,
-  cmd = { "oxfmt", "--lsp" },
-  filetypes = { "css", "html", "javascript", "json", "typescript", "vue", "typescriptreact", "yaml" },
-  root_dir = require("lspconfig.util").root_pattern("package.json", ".git"),
-})
-vim.lsp.enable("oxfmt")
