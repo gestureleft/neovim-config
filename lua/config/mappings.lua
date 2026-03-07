@@ -29,6 +29,9 @@ vim.keymap.set("v", "<Leader>fw", function()
   fzf_lua.grep_cword()
 end)
 
+-- Create terminal to the right
+vim.keymap.set("n", "<Leader>t", ":OpenTerminalLeft<cr>")
+
 -- Inlay hints
 vim.keymap.set("n", "<Leader>i", function()
   vim.print("Hello")

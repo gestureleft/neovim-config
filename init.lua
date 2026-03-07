@@ -13,6 +13,11 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
+vim.api.nvim_create_user_command("OpenTerminalLeft", function()
+  vim.cmd("vsplit")
+  vim.cmd("terminal")
+end, {})
+
 vim.opt.cursorline = true
 
 -- Case insensitive '/' searching
