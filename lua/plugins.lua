@@ -76,4 +76,7 @@ return {
   {
     "navarasu/onedark.nvim",
   },
+  {
+    "ember-theme/nvim",
+  },
 }

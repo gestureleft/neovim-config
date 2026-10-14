@@ -6,12 +6,12 @@ vim.lsp.config("ts_ls", {
     plugins = {
       {
         name = "@css-modules-kit/ts-plugin",
-        location = "/Users/harrison.marshall/.local/share/mise/installs/node/22.18.0/lib/node_modules/@css-modules-kit/ts-plugin",
+        location = "/Users/harrison.marshall/Library/pnpm/global/5/node_modules/@css-modules-kit/ts-plugin",
         languages = { "css" },
       },
       {
         name = "@vue/typescript-plugin",
-        location = "/Users/harrison.marshall/.local/share/mise/installs/node/22.18.0/lib/node_modules/@vue/typescript-plugin",
+        location = "/Users/harrison.marshall/Library/pnpm/global/5/node_modules/@vue/language-server",
         languages = { "javascript", "typescript", "vue", "typescriptreact" },
       },
     },
@@ -23,7 +23,7 @@ vim.lsp.config("ts_ls", {
     "typescriptreact",
   },
 })
-vim.lsp.enable("ts_ls")
+-- vim.lsp.enable("ts_ls")
 
 vim.lsp.config("eslint", {
   capabilities = capabilities,
@@ -40,11 +40,38 @@ vim.lsp.config("vue_ls", {
   capabilities = capabilities,
   init_options = {
     typescript = {
-      tsdk = "/Users/harrison.marshall/.local/share/mise/installs/node/22.18.0/lib/node_modules/typescript/lib",
+      tsdk = "/Users/harrison.marshall/Library/pnpm/global/5/node_modules/typescript/lib",
     },
   },
 })
 vim.lsp.enable("vue_ls")
+
+local vue_language_server_path = "/Users/harrison.marshall/Library/pnpm/global/5/node_modules/@vue/language-server"
+
+local vue_plugin = {
+  name = "@vue/typescript-plugin",
+  location = vue_language_server_path,
+  languages = { "vue" },
+  configNamespace = "typescript",
+}
+
+vim.lsp.config("vtsls", {
+  capabilities = capabilities,
+  settings = {
+    vtsls = {
+      tsserver = {
+        globalPlugins = { vue_plugin },
+      },
+    },
+  },
+  filetypes = {
+    "javascript",
+    "typescript",
+    "vue",
+    "typescriptreact",
+  },
+})
+vim.lsp.enable("vtsls")
 
 vim.lsp.config("stylelint_lsp", {
   capabilities = capabilities,
@@ -93,3 +120,10 @@ vim.lsp.config("basedpyright", {
   capabilities = capabilities,
 })
 vim.lsp.enable("basedpyright")
+
+vim.lsp.config("rust_analyzer", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("rust_analyzer")
+
+vim.lsp.enable("jdtls")

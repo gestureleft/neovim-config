@@ -2,7 +2,7 @@ local format_on_save = require("format-on-save")
 local formatters = require("format-on-save.formatters")
 
 local oxfmt = formatters.shell({
-  cmd = { "mise", "exec", "--", "oxfmt", "--stdin-filepath", "%" },
+  cmd = { "mise", "exec", "--", "pnpm", "exec", "oxfmt", "--stdin-filepath", "%" },
 })
 
 format_on_save.setup({
